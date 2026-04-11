@@ -2,7 +2,7 @@
 import React, {  useState } from 'react'
 import Displays from './Displays'
 
-const Input = () => {
+const ParentComponent = () => {
     
     
      const [input, setInput] = useState("");
@@ -10,7 +10,7 @@ const Input = () => {
  
 
   return (
-    <div>
+    <div className='flex content-center justify-center mt-48 gap-5'>
 
         <input         
           type='text'
@@ -26,4 +26,4 @@ const Input = () => {
   )
 }
 
-export default Input
+export default ParentComponent

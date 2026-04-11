@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Child = () => {
+const HiddenMessage = () => {
   return (
-    <div>
+    <div className='h-44'>
         <h1>welcome to child component</h1>
     </div>
   )
 }
 
-export default Child
+export default HiddenMessage

@@ -1,10 +1,10 @@
 import Post from "./components/Post";
 import UserList from "./components/UserList";
-import Button from "./components/Button";
-import Input from "./components/Input";
+import Toggle from "./components/Toggle";
 import ProductList from "./components/ProductList";
-import Parent from "./components/Parent";
 import FilterSystem from "./components/FilterSystem";
+import ParentComponent from "./components/ParentComponent";
+import ToggleManager from "./components/ToggleManager";
 
 
 function App() {
@@ -12,10 +12,10 @@ function App() {
     <div>
       {/* <UserList /> */}
       {/* <Post title={"Increment Count"}/> */}
-      {/* <Button/> */}
+      {/* <Toggle/> */}
       {/* <ProductList/> */}
-      {/* <Input/> */}
-      <Parent/>
+      {/* <ParentComponent/> */}
+      <ToggleManager/>
       {/* <FilterSystem/> */}
 
     </div>
