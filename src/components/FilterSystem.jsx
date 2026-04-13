@@ -1,23 +1,34 @@
 import { useState } from "react";
-import ChildFilter from "./ChildFilter"
+import ChildFilter from "./ChildFilter";
 
-function FilterSystem () {
+function FilterSystem() {
+  const items = ["mobile", "tablet", "laptop", "headphone", "earbuds"];
 
-    const item = ["mobile", "tablet", "laptop", "headphone", "earbuds"]
+  const [query, setQuery] = useState("");
 
-    const[query, setQuery] = useState("");
+  
+  const filteredItems = items.filter((item) =>
+    item.includes(query)
+  );
 
+   function onInputChange(val) {
+    return setQuery(val)
+   }
+   
+  return (
+    <div className="p-10 flex flex-col items-center">
+      
+      <ChildFilter onInputChange = {onInputChange} />
 
-
-    return(
-        <div>
-            {item.map(function(obj){
-                console.log(obj);
-            })}
-           
-           <ChildFilter onInput={(e) => setQuery(e.target.value)} />
-        </div>
-    )
+      
+        {filteredItems.map((obj) => (
+          <li  className=" py-2 text-lg">
+            {obj}
+          </li>
+        ))}
+     
+    </div>
+  );
 }
 
-export default FilterSystem
+export default FilterSystem;
