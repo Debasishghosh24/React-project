@@ -16,7 +16,7 @@ function FilteredUserID() {
         const filteredId = orders.filter((order) => obj.id === order.userId);
 
         console.log(filteredId);
-
+ 
         const productName = filteredId.map((match) => match.product);
 
         console.log(productName);

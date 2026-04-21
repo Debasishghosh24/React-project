@@ -21,6 +21,7 @@ import StartingWithA from "./components/StartingWithA";
 import FilterPrice from "./components/FilterPrice";
 import OrderedList from "./components/OrderedList";
 import FilteredUserID from "./components/FilteredUserId";
+import UserProfilePage from './components/UserProfilePage'
 
 
 
@@ -58,7 +59,10 @@ function App() {
       {/* <StartingWithA/> */}
       {/* <FilterPrice/> */}
       {/* <OrderedList/> */}
-      <FilteredUserID/>
+      {/* <FilteredUserID/> */}
+
+
+      <UserProfilePage/>
 
 
       
