@@ -20,8 +20,8 @@ function AddUsers({ isOpen, onClose, onAddUser }) {
   };
 
   return (
-    
-      <div className="bg-white p-8 rounded-2xl w-auto xl:w-96  ">
+    <div className="fixed inset-0 flex items-center justify-center bg-black/50">
+      <div className="bg-white p-8 rounded-2xl w-auto xl:w-96 ">
         <h2 className="text-2xl font-bold mb-6 text-gray-800">Add New User</h2>
 
         <div className="flex flex-col gap-4">
@@ -62,6 +62,7 @@ function AddUsers({ isOpen, onClose, onAddUser }) {
             Cancel
           </button>
         </div>
+      </div>
       </div>
    
   );
