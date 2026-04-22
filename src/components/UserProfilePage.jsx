@@ -5,10 +5,31 @@ import { useState } from "react";
 function UserProfilePage() {
   const [users, setUsers] = useState(userDetails);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(null)
 
-  const AddNewUser = (newUserData) => {
-    const newUser = { ...newUserData };
-    setUsers([...users, newUser]);
+
+const handleSave = (userData) => {
+    if (selectedUser !== null) {
+    
+      let updatedList = [...users];
+      updatedList[selectedUser.index] = userData;
+      setUsers(updatedList);
+    } else {
+      
+      const randomAvatar = `https://api.dicebear.com/7.x/avataaars/svg?seed=${userData.name}`;
+      setUsers([...users, { ...userData, profilePic: randomAvatar }]);
+    }
+    closeModal();
+  };
+
+  const openModal = (user = null, index = null) => {
+    setSelectedUser(user !== null ? { ...user, index } : null);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedUser(null);
   };
 
   return (
@@ -18,7 +39,7 @@ function UserProfilePage() {
           <h1 className="text-4xl font-extrabold mb-6 xl:ml-5">User List</h1>
 
           <button
-            onClick={() => setIsModalOpen(true)}
+            onClick={(() => openModal())}
             className="bg-green-600 text-white h-8 w-30  rounded-full font-bold cursor-pointer "
           >
             
@@ -26,13 +47,16 @@ function UserProfilePage() {
           </button>
         </div>
         <AddUsers
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-          onAddUser={AddNewUser}
+          isOpen={isModalOpen} 
+        onClose={closeModal} 
+        onSave={handleSave} 
+        editData={selectedUser}
         />
 
         <div className="grid gap-4 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2">
+          
           {users.map((obj, index) => {
+            
             return (
               <div
                 key={index}
@@ -41,7 +65,7 @@ function UserProfilePage() {
                 <div>
                   <img
                     src={obj.profilePic}
-                    className="w-24 h-24 rounded-full object-fill "
+                    className="w-24 h-24 rounded-full object-fill bg-white"
                   />
                 </div>
                 <div className="flex flex-col gap-1">
@@ -51,7 +75,11 @@ function UserProfilePage() {
                   <div className="text-gray-600">Age: {obj.age}</div>
                   <div className="text-gray-600">Address: {obj.address}</div>
                 </div>
+                <button onClick={() => openModal(obj, index)} className="text-white font-bold h-7 w-15 rounded-2xl cursor-pointer bg-blue-800 ">
+              Edit
+            </button>
               </div>
+              
             );
           })}
         </div>
